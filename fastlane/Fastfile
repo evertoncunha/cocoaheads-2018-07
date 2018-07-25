@@ -1,0 +1,106 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+project = "CocoaHeads2018-07.xcodeproj"
+
+test_target = "CocoaHeads2018-07Tests"
+
+derived_data_path = "fastlane/derived_data_path"
+
+test_devices = ["iPhone 6s iOS 10", "iPhone 8 Plus", "iPhone X"]
+
+
+# iPhone SE iOS 10, etc, is the name of simulator that I have created. You can create new simulators on Xcode at Window > Devices and Simulators > Simulators > plus sign at bottom left
+lane :build_for_tests do
+  # iPhone 5 and above
+    scan(
+      project: project,
+      derived_data_path: derived_data_path,
+      build_for_testing: true,
+      devices: test_devices
+    )
+end
+
+
+lane :take_snaps do |options|
+  testing = test_target
+  devices = test_devices
+  give_simulators_permissions
+  enable_simulators_keyboard
+  sh("rm -r -f ../#{test_target}/NewImages")
+  # fastlane take_snaps only:"xxx"
+  if options[:only]
+    testing += "/" + options[:only]
+  end
+  # fastlane take_snaps device:"xxx"
+  if options[:device]
+    devices = [options[:device]]
+  end
+for dev in devices
+    path = derived_data_path
+    if dev == "iPhone 4s"
+      path = derived_data_path_4s
+    end
+    begin
+      scan(
+        project: project,
+        devices: [dev],
+        derived_data_path: path,
+        test_without_building: true,
+        only_testing: testing
+      )
+    rescue Exception
+    end
+  end
+  sh("open ../#{test_target}")
+end
+
+
+lane :run_all_tests do |options|
+  sh("rm -r -f ../FailureDiffs")
+  give_simulators_permissions
+  enable_simulators_keyboard
+  devices = test_devices
+  # fastlane run_all_tests device:"xxx"
+  if options[:device]
+    devices = [options[:device]]
+  end
+  for dev in devices
+    path = derived_data_path
+    if dev == "iPhone 4s"
+      path = derived_data_path_4s
+    end
+    scan(
+      project: project,
+      devices: [dev],
+      derived_data_path: path,
+      test_without_building: true,
+      only_testing: test_target
+    )
+    end
+end
+
+
+lane :enable_simulators_keyboard do
+  sh("./enable_simulators_keyboards.sh")
+end
+
+lane :give_simulators_permissions do
+  # https://github.com/wix/AppleSimulatorUtils
+  for dev in test_devices 
+    sh("applesimutils --byName '#{dev}' --bundle 'br.com.unicred.Unicred-Debug' --setPermissions 'calendar=YES, camera=YES, contacts=YES, health=YES, homekit=YES, location=inuse, medialibrary=YES, microphone=YES, motion=YES, notifications=YES, photos=YES, reminders=YES, siri=YES, speech=YES'")
+  end
+end
+
+
+
+
