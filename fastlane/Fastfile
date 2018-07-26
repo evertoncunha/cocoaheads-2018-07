@@ -91,7 +91,7 @@ end
 
 
 lane :enable_simulators_keyboard do
-  sh("./enable_simulators_keyboards.sh")
+  sh "bash ./enable_simulators_keyboards.sh"
 end
 
 lane :give_simulators_permissions do
