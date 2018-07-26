@@ -8,6 +8,7 @@
 
 import XCTest
 @testable import CocoaHeads2018_07
+import EarlGrey
 
 class CocoaHeads2018_07Tests: SnapTestCase {
   
@@ -25,6 +26,8 @@ class CocoaHeads2018_07Tests: SnapTestCase {
   
   func test_snap_second() {
     loadViewUI()
+    element("second").tap()
+    snapshot()
   }
 }
 

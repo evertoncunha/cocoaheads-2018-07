@@ -14,6 +14,9 @@
 		3E376D71210A2A7F0022407E /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = 3E376D70210A2A7F0022407E /* Cartfile */; };
 		3E376D7B210A2BCE0022407E /* FBSnapshotTestCase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E376D7A210A2BCE0022407E /* FBSnapshotTestCase.framework */; };
 		3E376D80210A2BFB0022407E /* EarlGrey.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E376D7F210A2BFB0022407E /* EarlGrey.framework */; };
+		3E376D82210A2F9C0022407E /* EarlGreyExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E376D81210A2F9C0022407E /* EarlGreyExtensions.swift */; };
+		3E376D84210A2FF20022407E /* EarlGrey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E376D83210A2FF20022407E /* EarlGrey.swift */; };
+		3E376D88210A33070022407E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E376D87210A33070022407E /* MainViewController.swift */; };
 		3E9AD77E210808A800238F8E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9AD77D210808A800238F8E /* AppDelegate.swift */; };
 		3E9AD780210808A800238F8E /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9AD77F210808A800238F8E /* FirstViewController.swift */; };
 		3E9AD782210808A800238F8E /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9AD781210808A800238F8E /* SecondViewController.swift */; };
@@ -54,6 +57,9 @@
 		3E376D70210A2A7F0022407E /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = SOURCE_ROOT; };
 		3E376D7A210A2BCE0022407E /* FBSnapshotTestCase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSnapshotTestCase.framework; path = Carthage/Build/iOS/FBSnapshotTestCase.framework; sourceTree = "<group>"; };
 		3E376D7F210A2BFB0022407E /* EarlGrey.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EarlGrey.framework; path = Carthage/Build/iOS/EarlGrey.framework; sourceTree = "<group>"; };
+		3E376D81210A2F9C0022407E /* EarlGreyExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarlGreyExtensions.swift; sourceTree = "<group>"; };
+		3E376D83210A2FF20022407E /* EarlGrey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EarlGrey.swift; sourceTree = "<group>"; };
+		3E376D87210A33070022407E /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		3E9AD77A210808A800238F8E /* CocoaHeads2018-07.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CocoaHeads2018-07.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E9AD77D210808A800238F8E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3E9AD77F210808A800238F8E /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -97,6 +103,26 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		3E376D85210A30090022407E /* EarlGrey */ = {
+			isa = PBXGroup;
+			children = (
+				3E376D81210A2F9C0022407E /* EarlGreyExtensions.swift */,
+				3E376D83210A2FF20022407E /* EarlGrey.swift */,
+			);
+			path = EarlGrey;
+			sourceTree = "<group>";
+		};
+		3E376D86210A30140022407E /* Snapshot */ = {
+			isa = PBXGroup;
+			children = (
+				3E376D68210926800022407E /* HaveValidSnapshot.swift */,
+				3E376D69210926800022407E /* SnapTestCase.swift */,
+				3E376D6A210926800022407E /* UIDeviceExtensions.swift */,
+				3E376D6E210928670022407E /* CurrentTestCaseTracker.swift */,
+			);
+			path = Snapshot;
+			sourceTree = "<group>";
+		};
 		3E9AD771210808A800238F8E = {
 			isa = PBXGroup;
 			children = (
@@ -122,6 +148,7 @@
 				3E9AD77D210808A800238F8E /* AppDelegate.swift */,
 				3E9AD77F210808A800238F8E /* FirstViewController.swift */,
 				3E9AD781210808A800238F8E /* SecondViewController.swift */,
+				3E376D87210A33070022407E /* MainViewController.swift */,
 				3E9AD783210808A800238F8E /* Main.storyboard */,
 				3E9AD786210808A900238F8E /* Assets.xcassets */,
 				3E9AD788210808A900238F8E /* LaunchScreen.storyboard */,
@@ -136,10 +163,8 @@
 			isa = PBXGroup;
 			children = (
 				3E9AD794210808A900238F8E /* CocoaHeads2018_07Tests.swift */,
-				3E376D68210926800022407E /* HaveValidSnapshot.swift */,
-				3E376D69210926800022407E /* SnapTestCase.swift */,
-				3E376D6A210926800022407E /* UIDeviceExtensions.swift */,
-				3E376D6E210928670022407E /* CurrentTestCaseTracker.swift */,
+				3E376D86210A30140022407E /* Snapshot */,
+				3E376D85210A30090022407E /* EarlGrey */,
 				3E9AD796210808A900238F8E /* Info.plist */,
 			);
 			path = "CocoaHeads2018-07Tests";
@@ -273,6 +298,7 @@
 				3E9AD782210808A800238F8E /* SecondViewController.swift in Sources */,
 				3E9AD77E210808A800238F8E /* AppDelegate.swift in Sources */,
 				3E9AD780210808A800238F8E /* FirstViewController.swift in Sources */,
+				3E376D88210A33070022407E /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,7 +307,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				3E376D6B210926800022407E /* HaveValidSnapshot.swift in Sources */,
+				3E376D84210A2FF20022407E /* EarlGrey.swift in Sources */,
 				3E376D6F210928670022407E /* CurrentTestCaseTracker.swift in Sources */,
+				3E376D82210A2F9C0022407E /* EarlGreyExtensions.swift in Sources */,
 				3E376D6D210926800022407E /* UIDeviceExtensions.swift in Sources */,
 				3E376D6C210926800022407E /* SnapTestCase.swift in Sources */,
 				3E9AD795210808A900238F8E /* CocoaHeads2018_07Tests.swift in Sources */,
